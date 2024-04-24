@@ -542,10 +542,10 @@ class Swiper {
       mounted: true,
 
       // RTL
-      rtl: el.dir.toLowerCase() === 'rtl' || elementStyle(el, 'direction') === 'rtl',
+      rtl: (el.dir || elementStyle(el, 'direction') || el.ownerDocument.dir).toLowerCase() === 'rtl',
       rtlTranslate:
         swiper.params.direction === 'horizontal' &&
-        (el.dir.toLowerCase() === 'rtl' || elementStyle(el, 'direction') === 'rtl'),
+        (el.dir || elementStyle(el, 'direction') || el.ownerDocument.dir).toLowerCase() === 'rtl',
       wrongRTL: elementStyle(wrapperEl, 'display') === '-webkit-box',
     });
 
